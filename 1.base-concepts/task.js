@@ -16,7 +16,7 @@ function calculateTotalMortgage(percent, contribution, amount, countMonths) {
   let P = +percent / 100 / 12;
   let S = +amount - +contribution;
   let n = +countMonths;
-  let Pay = S * (P + (P / (((1 + P) ** n) - 1)));//Ежемесячный платеж
-  let Payment = +(Pay * n).toFixed(2) || "False";//Общий платеж
-  return Payment;
+  let feeMonth = S * (P + (P / (((1 + P) ** n) - 1)));//Ежемесячный платеж
+  let payYear = +(feeMonth * n).toFixed(2) || "False";//Общий платеж
+  return payYear;
 }
