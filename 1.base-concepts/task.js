@@ -6,8 +6,8 @@ function solveEquation(a, b, c) {
     let x = -b / (2 * a);
     arr.push(x);
   } else if (D > 0) {
-    let x1 = (-b - D ** 0.5) / (2 * a);
-    let x2 = (-b + D ** 0.5) / (2 * a);
+    let x1 = (-b + D ** 0.5) / (2 * a);
+    let x2 = (-b - D ** 0.5) / (2 * a);
     arr.push(x1, x2);
   }  
   return arr;
@@ -17,6 +17,6 @@ function calculateTotalMortgage(percent, contribution, amount, countMonths) {
   let S = +amount - +contribution;
   let n = +countMonths;
   let feeMonth = S * (P + (P / (((1 + P) ** n) - 1)));//Ежемесячный платеж
-  let payYear = +(feeMonth * n).toFixed(2) || "False";//Общий платеж
+  let payYear = +((feeMonth * n).toFixed(2))
   return payYear;
 }
