@@ -3,3 +3,4 @@
 .vscode
 1.base-concepts/01.code-workspace
 2.functions/02.code-workspace
+node_modules/
