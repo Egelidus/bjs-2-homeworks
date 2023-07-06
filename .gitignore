@@ -1,6 +1,8 @@
 .idea
 .DS_Store
 .vscode
-1.base-concepts/01.code-workspace
-2.functions/02.code-workspace
+01.code-workspace
+02.code-workspace
+node_modules/
+03.code-workspace
 node_modules/
