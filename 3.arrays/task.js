@@ -9,7 +9,7 @@ function getUsersNamesInAgeRange(users, gender) {
     a => a.gender === gender
   ).reduce(
     (acc,item,index,arr) => {
-     acc  += item.age;
+     acc += item.age;
      return index == arr.length-1 ? acc/arr.length : acc;
     }, 0
   )
