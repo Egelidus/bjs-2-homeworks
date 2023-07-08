@@ -5,16 +5,12 @@ function compareArrays(arr1, arr2) {
 }
 
 function getUsersNamesInAgeRange(users, gender) {
-   return users.some(
-     a => a.gender == gender
-   ) ? users.filter(
-     a => a.gender === gender
-   ).map(
-     a => a.age
-   ).reduce(
-     (a,b,c,d) => {
-       a += b;
-       return c == d.length-1 ? a/d.length : a;
-     }
-   ) : 0;
+  return users.filter(
+    a => a.gender === gender
+  ).reduce(
+    (acc,item,index,arr) => {
+     acc  += item.age;
+     return index == arr.length-1 ? acc/arr.length : acc;
+    }, 0
+  )
 }
