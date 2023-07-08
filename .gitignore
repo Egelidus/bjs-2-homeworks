@@ -2,7 +2,4 @@
 .DS_Store
 .vscode
 node_modules/
-01.code-workspace
-02.code-workspace
-03.code-workspace
-04.code-workspace
+vs.code-workspace
