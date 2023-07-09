@@ -5,7 +5,6 @@ function compareArrays(arr1, arr2) {
 }
 
 function getUsersNamesInAgeRange(users, gender) {
-<<<<<<< HEAD
   return users.filter(
     a => a.gender === gender
   ).reduce(
@@ -14,7 +13,4 @@ function getUsersNamesInAgeRange(users, gender) {
      return index == arr.length-1 ? acc/arr.length : acc;
     }, 0
   )
-=======
-
->>>>>>> a6e89f0a02d2f37f51e63a7ea69221f92daefacb
 }
