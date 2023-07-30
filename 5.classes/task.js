@@ -70,3 +70,24 @@ class Library {
     return this.books.findIndex(item => item.name == bookName) >= 0 ? this.books.splice(this.books.findIndex(item => item.name === bookName), 1) : null;
   }
 }
+
+class Student {
+  constructor(name) {
+    this.name = name;
+    this.marks = {};
+  }
+  addMark(mark, subject) {
+    if (mark < 2 || mark > 5) {return};
+    !(subject in this.marks) && (this.marks[subject] = []);    
+    this.marks[subject].push(mark);
+  }
+  getAverageBySubject(subject) {
+    let marks = this.marks[subject]
+    if (!marks) {return 0};
+    return +(marks.reduce((acc,item) => acc + item, 0) / marks.length).toFixed(2);
+  }
+  getAverage() {
+    let subjects = Object.keys(this.marks);
+    return (subjects.reduce((acc,item) => acc + this.getAverageBySubject(item), 0)) / subjects.length;
+  }
+}
