@@ -67,7 +67,8 @@ class Library {
     return this.books.find(item => item[type] == value) || null
   }
   giveBookByName(bookName) {
-    return this.books.findIndex(item => item.name == bookName) >= 0 ? this.books.splice(this.books.findIndex(item => item.name === bookName), 1) : null;
+    let bookNameIndex = this.books.findIndex(item => item.name == bookName);
+    return bookNameIndex >= 0 ? this.books.splice(bookNameIndex, 1) : null;
   }
 }
 
