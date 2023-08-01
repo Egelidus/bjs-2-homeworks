@@ -68,7 +68,7 @@ class Library {
   }
   giveBookByName(bookName) {
     let bookNameIndex = this.books.findIndex(item => item.name == bookName);
-    return bookNameIndex >= 0 ? this.books.splice(bookNameIndex, 1) : null;
+    return bookNameIndex >= 0 ? this.books.splice(bookNameIndex, 1)[0] : null;
   }
 }
 
@@ -85,10 +85,10 @@ class Student {
   getAverageBySubject(subject) {
     let marks = this.marks[subject]
     if (!marks) {return 0};
-    return +(marks.reduce((acc,item) => acc + item, 0) / marks.length).toFixed(2);
+    return +marks.reduce((a,b,c,d) => a + b / d.length, 0).toFixed(2);
   }
   getAverage() {
     let subjects = Object.keys(this.marks);
-    return (subjects.reduce((acc,item) => acc + this.getAverageBySubject(item), 0)) / subjects.length;
+    return subjects.reduce((a,b,c,d) => a + this.getAverageBySubject(b) / d.length, 0);
   }
 }
