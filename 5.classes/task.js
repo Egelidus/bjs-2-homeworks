@@ -89,6 +89,6 @@ class Student {
   }
   getAverage() {
     let subjects = Object.keys(this.marks);
-    return subjects.reduce((a,b,c,d) => a + this.getAverageBySubject(b) / d.length, 0);
+    return +subjects.reduce((a,b,c,d) => a + this.getAverageBySubject(b) / d.length, 0).toFixed(2);
   }
 }
