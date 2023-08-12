@@ -32,17 +32,13 @@ function getTriangle (sideOne, sideTwo, sideThree) {
   try {
     return new Triangle (sideOne, sideTwo, sideThree);
   } catch {
-    class TriError {
-      text () {
+    return {
+      get perimeter () {
+        return "Ошибка! Треугольник не существует";
+      },
+      get area () {
         return "Ошибка! Треугольник не существует";
       }
-      get perimeter () {
-        return this.text();
-      }
-      get area () {
-        return this.text();
-      }
     }
-    return new TriError ()
   }
 }
