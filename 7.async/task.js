@@ -13,7 +13,7 @@ class AlarmClock {
     return this.alarmCollection.push({callback: alarmGo, time: alarmTime, canCall: true});
   }
   removeClock(time) {
-    this.alarmCollection.splice(this.alarmCollection.findIndex(item => item.time == time), 1);
+    this.alarmCollection = this.alarmCollection.filter(item => item.time !== time);
   }
   getCurrentFormattedTime () {
   let dateHH = new Date().getHours();
@@ -24,14 +24,16 @@ class AlarmClock {
   }
   start() {
     if (this.intervalId) {
-      this.intervalId = setInterval(this.alarmCollection.forEach(item => {
+      return;
+    }
+    this.intervalId = setInterval(function () {
+      this.alarmCollection.forEach(item => {
         if (item.canCall && this.getCurrentFormattedTime() == item.time) {
           item.canCall = false;
           return item.callback();
         }
-      }), 1000)
-    }
-    return;
+      })
+    }, 1000)
   }
   stop () {
     clearInterval(this.intervalId);
