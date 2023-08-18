@@ -27,7 +27,7 @@ class AlarmClock {
       return;
     }
     this.intervalId = setInterval(function () {
-      this.alarmCollection.forEach(item => {
+      return this.alarmCollection.forEach(item => {
         if (item.canCall && this.getCurrentFormattedTime() == item.time) {
           item.canCall = false;
           return item.callback();
