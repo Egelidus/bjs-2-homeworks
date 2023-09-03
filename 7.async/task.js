@@ -22,18 +22,15 @@ class AlarmClock {
   let minutes = String(dateMM).length == 1 ? `0${dateMM}` : dateMM;
   return `${hours}:${minutes}`;
   }
-  start() {
+  start () {
     if (this.intervalId) {
       return;
     }
-    this.intervalId = setInterval(function () {
-      return this.alarmCollection.forEach(item => {
-        if (item.canCall && this.getCurrentFormattedTime() == item.time) {
-          item.canCall = false;
-          return item.callback();
-        }
-      })
-    }, 1000)
+    this.intervalId = setInterval(() => this.alarmCollection.forEach(item => {
+      if (item.canCall && this.getCurrentFormattedTime() == item.time) {
+        item.canCall = false;
+      }
+    }), 1000)
   }
   stop () {
     clearInterval(this.intervalId);
