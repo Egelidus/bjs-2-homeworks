@@ -19,23 +19,21 @@ function cachingDecoratorNew(func) {
   return wrapper;
 }
 
-function debounceDecorator(func, delay) {
-  let isThrottled = false;
+function debounceDecoratorNew(func, delay) {
+  let timeoutId;
   function wrapper(...args) {
-    wrapper.history.push(args);
-    wrapper.count = wrapper.history.length;
-    wrapper.allCount = wrapper.result.length;
-    if (isThrottled) {
-      return;
+    wrapper.allCount++;
+    if (!timeoutId) {
+      wrapper.count++;
+      timeoutId = true;
+      return func(...args);
     }
-    const result = func(...args);
-    wrapper.result.push(result)
-    isThrottled = true;
-    setTimeout(() => isThrottled = false, delay);
-    return result;
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      wrapper.count++;
+      func(...args);
+    }, delay);
   }
-  wrapper.history = [];
-  wrapper.result = [];
   wrapper.count = 0;
   wrapper.allCount = 0;
   return wrapper;
